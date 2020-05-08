@@ -11,9 +11,9 @@ function playSound (id, classImg, color) {
         sound.currentTime = 0
     }
     let soundImg = document.querySelector(classImg)
-    soundImg.src = '../assets/images/trackButton' + color+ '.png'
+    soundImg.src = './assets/images/trackButton' + color+ '.png'
     setTimeout(function(){ 
-        soundImg.src = '../assets/images/trackButton.png'
+        soundImg.src = './assets/images/trackButton.png'
     }, sound.duration * 1000)
     
 }
