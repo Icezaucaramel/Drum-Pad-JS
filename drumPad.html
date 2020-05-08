@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum Pad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/bootstrap-grid.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="offset-3 col-6 trackRecord">
+            <div class="masterVolume">
+                <h3>Master Volume</h3>
+                <input type="range" min="1" max="10" class="configButtonsSliders masterVolumeConfig">
+            </div>
+            <div class="trackVibes">
+                <img src="assets/images/TrackpadVibes.png" alt="Vibes">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="offset-2 col-8 trackPad">
+            <div class="line1 lineConfig">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line1-1" data-key="65">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line1-2" data-key="90">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line1-3" data-key="69">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line1-4" data-key="82">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line1-5" data-key="84">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line1-6" data-key="89">
+            </div>
+            <div class="line2 lineConfig">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line2-1" data-key="85">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line2-2" data-key="73">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line2-3" data-key="79">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line2-4" data-key="80">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line2-5" data-key="221">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line2-6" data-key="186">
+            </div>
+            <div class="line3 lineConfig">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line3-1" data-key="81">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line3-2" data-key="83">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line3-3" data-key="68">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line3-4" data-key="70">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line3-5" data-key="71">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line3-6" data-key="72">
+            </div>
+            <div class="line4 lineConfig">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line4-1" data-key="74">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line4-2" data-key="75">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line4-3" data-key="76">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line4-4" data-key="77">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line4-5" data-key="192">
+                <img src="assets/images/trackButton.png" alt="trackBoutton" class="configTrackSound line4-6" data-key="220">
+            </div>
+        </div>
+        <div class="offset-1 col-3 trackConfig">
+        </div>
+    </div>
+    <audio id="clap1">
+    <source src="assets/sounds/clap/Clap1.wav" type="audio/wav">
+    </audio>
+    <audio id="clap2">
+        <source  data-key="90" src="assets/sounds/clap/Clap2.wav" type="audio/wav">
+    </audio>
+    <audio id="clap3">
+        <source data-key="69" src="assets/sounds/clap/Clap3.wav">
+    </audio>
+    <audio id="clap4">
+        <source data-key="82" src="assets/sounds/clap/Clap4.wav">
+    </audio>
+    <audio id="clap5">
+        <source data-key="84" src="assets/sounds/clap/Clap5.wav">
+    </audio>
+    <audio id="clap6">
+        <source data-key="89" src="assets/sounds/clap/Clap6.wav">
+    </audio>
+
+<audio id="hiHat1">     
+    <source data-key="85" src="assets/sounds/HiHat/HiHat1.wav">
+</audio>
+<audio id="hiHat2">
+    <source data-key="73" src="assets/sounds/HiHat/HiHat2.wav">
+</audio>
+<audio id="hiHat3">
+    <source data-key="79" src="assets/sounds/HiHat/HiHat3.wav">
+</audio>
+<audio id="hiHat4">
+    <source data-key="80" src="assets/sounds/HiHat/HiHat4.wav">
+</audio>
+<audio id="hiHat5">
+    <source data-key="221" src="assets/sounds/HiHat/HiHat5.wav">
+</audio>
+<audio id="hiHat6">
+    <source data-key="186" src="assets/sounds/HiHat/HiHat6.wav">
+</audio>
+
+<audio id="kick1">
+    <source data-key="81" src="assets/sounds/kick/kick1.wav">^
+</audio>
+<audio id="kick2">
+    <source data-key="83" src="assets/sounds/kick/kick2.wav">
+</audio>
+<audio id="kick3">
+    <source data-key="68" src="assets/sounds/kick/kick3.wav">
+</audio>
+<audio id="kick4">
+    <source data-key="70" src="assets/sounds/kick/kick4.wav">
+</audio>
+<audio id="kick5">
+    <source data-key="71" src="assets/sounds/kick/kick5.wav">
+</audio>
+<audio id="kick6">
+    <source data-key="72" src="assets/sounds/kick/kick6.wav">
+</audio>
+
+<audio id="snare1">
+    <source data-key="74" src="assets/sounds/snare/snare1.wav">
+</audio>
+<audio id="snare2">
+    <source data-key="75" src="assets/sounds/snare/snare2.wav">
+</audio>
+<audio id="snare3">
+    <source data-key="76" src="assets/sounds/snare/snare3.wav">
+</audio>
+<audio id="snare4">
+    <source data-key="77" src="assets/sounds/snare/snare4.wav">
+</audio>
+<audio id="snare5">
+    <source data-key="192" src="assets/sounds/snare/snare5.wav">
+</audio>
+<audio id="snare6">
+    <source data-key="220" src="assets/sounds/snare/snare6.wav">
+</audio>
+    <script src="scripts/script.js"></script>
+</div>
+</body>
+</html>
