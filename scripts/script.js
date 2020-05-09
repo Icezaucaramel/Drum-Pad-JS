@@ -1,4 +1,5 @@
 let soundVolume = document.querySelector('.masterVolumeConfig') // Get the input for the volume
+let outputVolume = document.querySelector('.outputVolume')
 
 function playSound (id, classImg, color) {      // Function for playing the sound and changing the img 
     let sound = document.getElementById(id)
@@ -93,3 +94,6 @@ function playSound (id, classImg, color) {      // Function for playing the soun
     }
   })
 
+  soundVolume.oninput = function() {
+      outputVolume.innerHTML = this.value
+  }
