@@ -12,13 +12,14 @@ function playSound (id, classImg, color) {      // Function for playing the soun
     soundImg.src = './assets/images/trackButton' + color+ '.png'
     setTimeout(function(){ 
         soundImg.src = './assets/images/trackButton.png'
-    }, sound.duration * 1000)
+    }, sound.duration * 1000) 
 }
 
   document.addEventListener("keydown", function(event) {    
     let eventWichKey = event.which
     switch (eventWichKey) {                                 // To get wich key is actually down 
-        case 65:                                            // Switch because it's more efficient
+        case 65:                                            // Switch because it's more efficiency 
+            playSound('clap1', '.line1-1', 1)
             break
         case 90:
             playSound('clap2', '.line1-2', 1)
