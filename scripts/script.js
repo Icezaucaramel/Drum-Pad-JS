@@ -1,32 +1,24 @@
-let soundVolume = document.querySelector('.masterVolumeConfig')
-console.log(soundVolume.value / 10)
+let soundVolume = document.querySelector('.masterVolumeConfig') // Get the input for the volume
 
-
-function playSound (id, classImg, color) {
+function playSound (id, classImg, color) {      // Function for playing the sound and changing the img 
     let sound = document.getElementById(id)
-    sound.volume = soundVolume.value / 10
+    sound.volume = soundVolume.value / 10    // /10 because the value of .volume is between 0.1 and 1, the input return us something between 1 and 10
     if (sound.paused) {
         sound.play()
     } else {
-        sound.currentTime = 0
+        sound.currentTime = 0               
     }
     let soundImg = document.querySelector(classImg)
     soundImg.src = './assets/images/trackButton' + color+ '.png'
     setTimeout(function(){ 
         soundImg.src = './assets/images/trackButton.png'
     }, sound.duration * 1000)
-    
 }
 
-// document.addEventListener("keydown", function(event) {
-//     console.log(event.which)
-//   })
-
-  document.addEventListener("keydown", function(event) {
+  document.addEventListener("keydown", function(event) {    
     let eventWichKey = event.which
-    switch (eventWichKey) {
-        case 65:
-            playSound('clap1', '.line1-1', 1)
+    switch (eventWichKey) {                                 // To get wich key is actually down 
+        case 65:                                            // Switch because it's more efficient
             break
         case 90:
             playSound('clap2', '.line1-2', 1)

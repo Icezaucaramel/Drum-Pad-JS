@@ -17,6 +17,8 @@ body{
     display: flex;
 }
 
+/* Config Button */
+
 .configButtonsSliders {
     -webkit-appearance: none;
     transform: rotate(-90deg);
@@ -48,6 +50,8 @@ body{
     cursor: pointer;
   }
 
+
+/* Track Vibes */
 
 .trackVibes{
     margin-top: 40px;
