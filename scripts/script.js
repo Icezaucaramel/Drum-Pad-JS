@@ -1,125 +1,75 @@
-let soundVolume = document.querySelector('.masterVolumeConfig') // Get the input for the volume
-let outputVolume = document.querySelector('.outputVolume')
-let redColumn = document.querySelector('.redColumn')
-let greenColumn = document.querySelector('.greenColumn')
-let purpleColumn = document.querySelector('.purpleColumn')
-let yellowColumn = document.querySelector('.yellowColumn')
+const soundVolume = document.querySelector('.masterVolumeConfig') // Get the input for the volume
+const outputVolume = document.querySelector('.outputVolume')    // output 
+const redColumn = document.querySelector('.redColumn')
+const greenColumn = document.querySelector('.greenColumn')
+const purpleColumn = document.querySelector('.purpleColumn')
+const yellowColumn = document.querySelector('.yellowColumn')
 
-function playSound (id, classImg, color) {      // Function for playing the sound and changing the img 
-    let sound = document.getElementById(id)
-    sound.volume = soundVolume.value / 10    // /10 because the value of .volume is between 0.1 and 1, the input return us something between 1 and 10
-    if (sound.paused) {
-        sound.play()
-        let cssElement
-        switch (color) {
-            case 1: 
-                cssElement = redColumn   
-                break
-            case 2:
-                cssElement = greenColumn
-                break
-            case 3: 
-                cssElement = purpleColumn
-                break
-            case 4:
-                cssElement = yellowColumn
-                break
-        }
-            let temp = cssElement.offsetHeight + 20 
-            cssElement.style.height = temp + 'px'
-            setTimeout(function(){
-                let logTemp = cssElement.offsetHeight
-                logTemp -= (cssElement.offsetHeight >= 0) ? 20 : 0
-                cssElement.style.height = logTemp + 'px'
-              }, sound.duration * 1000) 
-    } else {
-        sound.currentTime = 0               
-    }
-    let soundImg = document.querySelector(classImg)
-    soundImg.src = './assets/images/trackButton' + color+ '.png'
-    setTimeout(function(){ 
-        soundImg.src = './assets/images/trackButton.png'
+const VisualizationColor = {    // 
+    RED: { id: 1, selector: redColumn },
+    GREEN: { id: 2, selector: greenColumn },
+    PURPLE: { id: 3, selector: purpleColumn },
+    YELLOW: { id: 4, selector: yellowColumn }
+}
+
+function handleVizualiation(sound, colorElement) {      // Vizualiation of the buttons pressed
+    const newHeight = colorElement.offsetHeight + 20        
+    colorElement.style.height = newHeight + 'px'
+    setTimeout(() => {
+        const newHeight = Math.max(colorElement.offsetHeight - 20, 0)
+        colorElement.style.height = newHeight + 'px'
     }, sound.duration * 1000) 
 }
 
-  document.addEventListener("keydown", function(event) {    
-    let eventWichKey = event.which
-    switch (eventWichKey) {                                 // To get wich key is actually down 
-        case 65:                                            // Switch because it's more efficiency 
-            playSound('clap1', '.line1-1', 1)
-            break
-        case 90:
-            playSound('clap2', '.line1-2', 1)
-            break
-        case 69:
-            playSound('clap3', '.line1-3', 1)
-            break
-        case 82:
-            playSound('clap4', '.line1-4', 1)
-            break
-        case 84:
-            playSound('clap5', '.line1-5', 1)
-            break
-        case 89:
-            playSound('clap6', '.line1-6', 1)
-            break
-        case 85:
-            playSound('hiHat1', '.line2-1', 2)
-            break
-        case 73:
-            playSound('hiHat2', '.line2-2', 2)
-            break
-        case 79:
-            playSound('hiHat3', '.line2-3', 2)
-            break
-        case 80:
-            playSound('hiHat4', '.line2-4', 2)
-            break
-        case 221:
-            playSound('hiHat5', '.line2-5', 2)
-            break
-        case 186:
-            playSound('hiHat6', '.line2-6', 2)
-            break   
-        case 81:
-             playSound('kick1', '.line3-1', 3)
-            break 
-        case 83:
-            playSound('kick2', '.line3-2', 3)
-            break
-        case 68:
-            playSound('kick3', '.line3-3', 3)
-            break
-        case 70:
-            playSound('kick4', '.line3-4', 3)
-            break
-        case 71:
-            playSound('kick5', '.line3-5', 3)
-            break
-        case 72:
-            playSound('kick6', '.line3-6', 3)
-            break
-        case 74:
-            playSound('snare1', '.line4-1', 4)
-            break
-        case 75:
-            playSound('snare2', '.line4-2', 4)
-            break
-        case 76:
-            playSound('snare3', '.line4-3', 4)
-            break
-        case 77:
-            playSound('snare4', '.line4-4', 4)
-            break
-        case 192:
-            playSound('snare5', '.line4-5', 4)
-            break
-        case 220:
-            playSound('snare6', '.line4-6', 4)
-            break
-    }
-  })
+function updateImage(sound, classImg, colorId) {        // Change the button color by changing the img
+    const soundImg = document.querySelector(classImg)
+    soundImg.src = `./assets/images/trackButton${colorId}.png`;
+    setTimeout(() => soundImg.src = './assets/images/trackButton.png', sound.duration * 1000) 
+}
 
-  soundVolume.oninput = function() {
-      outputVolume.innerHTML = this.value
-  }
+const soundsList = {    // List of sounds, classnames, and color to attribuates
+    65: { name: 'clap1', selector: '.line1-1', color: VisualizationColor.RED }, 
+    90: { name: 'clap2', selector: '.line1-2', color: VisualizationColor.RED },        
+    69: { name: 'clap3', selector: '.line1-3', color: VisualizationColor.RED },        
+    82: { name: 'clap4', selector: '.line1-4', color: VisualizationColor.RED },        
+    84: { name: 'clap5', selector: '.line1-5', color: VisualizationColor.RED },        
+    89: { name: 'clap6', selector: '.line1-6', color: VisualizationColor.RED },        
+    85: { name: 'hiHat1', selector: '.line2-1', color: VisualizationColor.GREEN },        
+    73: { name: 'hiHat2', selector: '.line2-2', color: VisualizationColor.GREEN },        
+    79: { name: 'hiHat3', selector: '.line2-3', color: VisualizationColor.GREEN },        
+    80: { name: 'hiHat4', selector: '.line2-4', color: VisualizationColor.GREEN },        
+    221: { name: 'hiHat5', selector: '.line2-5', color: VisualizationColor.GREEN },        
+    186: { name: 'hiHat6', selector: '.line2-6', color: VisualizationColor.GREEN },        
+    81: { name: 'kick1', selector: '.line3-1', color: VisualizationColor.PURPLE },        
+    83: { name: 'kick2', selector: '.line3-2', color: VisualizationColor.PURPLE },        
+    68: { name: 'kick3', selector: '.line3-3', color: VisualizationColor.PURPLE },        
+    70: { name: 'kick4', selector: '.line3-4', color: VisualizationColor.PURPLE },        
+    71: { name: 'kick5', selector: '.line3-5', color: VisualizationColor.PURPLE },        
+    72: { name: 'kick6', selector: '.line3-6', color: VisualizationColor.PURPLE },        
+    74: { name: 'snare1', selector: '.line4-1', color: VisualizationColor.YELLOW },        
+    75: { name: 'snare2', selector: '.line4-2', color: VisualizationColor.YELLOW },        
+    76: { name: 'snare3', selector: '.line4-3', color: VisualizationColor.YELLOW },        
+    77: { name: 'snare4', selector: '.line4-4', color: VisualizationColor.YELLOW },        
+    192: { name: 'snare5', selector: '.line4-5', color: VisualizationColor.YELLOW },        
+    220: { name: 'snare6', selector: '.line4-6', color: VisualizationColor.YELLOW },
+};
+
+document.addEventListener("keydown", ({ which }) => { 
+    if (!soundsList[which]) {
+        return;
+    }
+    const { name, selector, color } = soundsList[which];
+    const sound = document.getElementById(name)
+    sound.volume = soundVolume.value / 10    // /10 because the value of .volume is between 0.1 and 1, the input return us something between 1 and 10
+    if (sound.paused) {
+        sound.play()
+        handleVizualiation(sound, color.selector);
+    } else {
+        sound.currentTime = 0    // Reset the current time to replay the sound
+    }
+    updateImage(sound, selector, color.id);
+})
+
+soundVolume.oninput = function() {      // Volume Output
+    outputVolume.innerHTML = this.value
+}

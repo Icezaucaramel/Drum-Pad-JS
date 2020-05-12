@@ -7,9 +7,7 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-img{
-    width: 11%;
-}
+
 /*Track record*/
 
 .trackRecord{
@@ -103,11 +101,16 @@ img{
 /*TrackPad*/
 
 .trackPad{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-row-gap: 20px;
+    justify-items: center;
     height: 100%;
     width: 100%;
     background-color: #35383a;
     margin-top: 25px;
     border-radius: 5%;    
+    padding: 25px 0 25px 0
 }
 
 .line1{
