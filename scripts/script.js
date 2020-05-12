@@ -1,11 +1,37 @@
 let soundVolume = document.querySelector('.masterVolumeConfig') // Get the input for the volume
 let outputVolume = document.querySelector('.outputVolume')
+let redColumn = document.querySelector('.redColumn')
+let greenColumn = document.querySelector('.greenColumn')
+let purpleColumn = document.querySelector('.purpleColumn')
+let yellowColumn = document.querySelector('.yellowColumn')
 
 function playSound (id, classImg, color) {      // Function for playing the sound and changing the img 
     let sound = document.getElementById(id)
     sound.volume = soundVolume.value / 10    // /10 because the value of .volume is between 0.1 and 1, the input return us something between 1 and 10
     if (sound.paused) {
         sound.play()
+        let cssElement
+        switch (color) {
+            case 1: 
+                cssElement = redColumn   
+                break
+            case 2:
+                cssElement = greenColumn
+                break
+            case 3: 
+                cssElement = purpleColumn
+                break
+            case 4:
+                cssElement = yellowColumn
+                break
+        }
+            let temp = cssElement.offsetHeight + 20 
+            cssElement.style.height = temp + 'px'
+            setTimeout(function(){
+                let logTemp = cssElement.offsetHeight
+                logTemp -= (cssElement.offsetHeight >= 0) ? 20 : 0
+                cssElement.style.height = logTemp + 'px'
+              }, sound.duration * 1000) 
     } else {
         sound.currentTime = 0               
     }

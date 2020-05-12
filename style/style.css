@@ -20,6 +20,38 @@ img{
     display: flex;
 }
 
+
+.soundColumn{
+    background-color: #121415;
+    width: 70%;
+    height: 86%;
+    border-radius: 40px;
+    margin-top: 20px;
+    margin-left: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.redColumn{
+    background-color: #c20e2c;
+    width: 10%;
+}
+
+.greenColumn{
+    background-color: #5cd702;
+    width: 10%;
+}
+
+.purpleColumn{
+    background-color: #d702d5;
+    width: 10%;
+}
+
+.yellowColumn{
+    background-color: #ebf400;
+    width: 10%;
+}
 /* Config Button */
 
 .configButtonsSliders {
